@@ -1,24 +1,20 @@
-import { Link, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import MainPage from './pages/MainPage'
 import TestPage from './pages/TestPage'
+import NavBar from './components/NavBar/NavBar'
 
 function App(): JSX.Element {
   // const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
 
   return (
-    <div>
-      <header>
-        <ul>
-          <li>
-            <Link to="/">Main</Link>
-            <Link to="/test">Test</Link>
-          </li>
-        </ul>
-      </header>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/test" element={<TestPage />} />
-      </Routes>
+    <div className="h-screen w-screen flex items-stretch">
+      <NavBar />
+      <div className="grow">
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/test" element={<TestPage />} />
+        </Routes>
+      </div>
     </div>
   )
 }
