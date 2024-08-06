@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import MainPage from './pages/MainPage'
 import NavBar from './components/NavBar/NavBar'
 import TimerPage from './pages/TimerPage'
+import CreateTimerPage from './pages/CreateTimerPage'
 
 function App(): JSX.Element {
   // const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
@@ -13,6 +14,7 @@ function App(): JSX.Element {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/timer" element={<TimerPage />} />
+          <Route path="/create-timer" element={<CreateTimerPage />} />
         </Routes>
       </div>
     </div>

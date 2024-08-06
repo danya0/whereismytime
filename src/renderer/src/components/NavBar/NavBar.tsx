@@ -11,7 +11,9 @@ const NavBar = (): ReactElement => {
         </li>
       </ul>
 
-      <ButtonUI className="mr-3">Create timer</ButtonUI>
+      <ButtonUI navigate="/create-timer" className="mr-3">
+        Create timer
+      </ButtonUI>
     </nav>
   )
 }
