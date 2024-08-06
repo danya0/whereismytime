@@ -4,11 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbbc1b7e-70c3-4497-9360-8ac5122aca88" name="Changes" comment="" />
+    <list default="true" id="cbbc1b7e-70c3-4497-9360-8ac5122aca88" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/pages/MainPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/src/pages/TestPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/assets/base.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/assets/electron.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/assets/wavy-lines.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/components/Versions.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/main.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "customColor": "",
@@ -22,6 +37,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -73,7 +89,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1722947895503</updated>
-      <workItem from="1722947897915" duration="631000" />
+      <workItem from="1722947897915" duration="1198000" />
     </task>
     <servers />
   </component>
