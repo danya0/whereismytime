@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import MainPage from './pages/MainPage'
-import TestPage from './pages/TestPage'
 import NavBar from './components/NavBar/NavBar'
+import TimerPage from './pages/TimerPage'
 
 function App(): JSX.Element {
   // const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
@@ -9,10 +9,10 @@ function App(): JSX.Element {
   return (
     <div className="h-screen w-screen flex items-stretch">
       <NavBar />
-      <div className="grow">
+      <div className="grow overflow-hidden">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/test" element={<TestPage />} />
+          <Route path="/timer" element={<TimerPage />} />
         </Routes>
       </div>
     </div>

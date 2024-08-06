@@ -1,14 +1,15 @@
 import { ReactElement } from 'react'
-import { redirect } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {
   active?: boolean
 }
 
 const NavBarItem = ({ active }: Props): ReactElement => {
+  const navigate = useNavigate()
   return (
     <div
-      onClick={() => redirect('/')}
+      onClick={() => navigate('/timer')}
       className={`rounded-md cursor-pointer p-3 transition-colors ${active ? 'bg-white' : 'hover:bg-white/50'}`}
     >
       <div className="flex items-center gap-x-2">
