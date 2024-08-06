@@ -2,7 +2,7 @@ import { ReactElement } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 type Props = {
-  children?: ReactElement | string
+  children?: ReactElement | string | string[]
   onClick?: () => void
   className?: string
   navigate?: string

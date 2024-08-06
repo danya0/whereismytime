@@ -3,9 +3,35 @@ import MainPage from './pages/MainPage'
 import NavBar from './components/NavBar/NavBar'
 import TimerPage from './pages/TimerPage'
 import CreateTimerPage from './pages/CreateTimerPage'
+import { useEffect } from 'react'
+import { useTimersStore } from './store/timersStore'
+import usePrevious from './hooks/usePrevious'
 
 function App(): JSX.Element {
   // const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
+
+  const { selectedTimerId, startedInterval, createInterval, removeInterval } = useTimersStore()
+  const prevSelectedTimerId = usePrevious(selectedTimerId)
+  let seconds = 0
+  useEffect((): void => {
+    if (prevSelectedTimerId && prevSelectedTimerId !== selectedTimerId) {
+      removeInterval()
+      // чистим и запускаем новый интервал дальше
+    }
+
+    if (selectedTimerId) {
+      createInterval(
+        setInterval(() => {
+          console.log('seconds -> ', seconds)
+          seconds++
+        }, 1000)
+      )
+    }
+
+    if (selectedTimerId === null && startedInterval) {
+      removeInterval()
+    }
+  }, [selectedTimerId])
 
   return (
     <div className="h-screen w-screen flex items-stretch">

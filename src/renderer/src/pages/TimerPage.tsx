@@ -7,19 +7,32 @@ import TimerZoneContainer from '../components/TimerZone/TimerZoneContainer'
 const TimerPage = (): ReactElement => {
   const { id } = useParams()
   const timerStore = useTimersStore()
-  const timer = id ? timerStore.getById(id) : undefined
+  const timerFromStore = id ? timerStore.getById(id) : undefined
+
+  const { toggleTimer, selectedTimerId } = useTimersStore()
+  const currentIdSelected = selectedTimerId === id
+  const togTimer = (): void => {
+    const val = !currentIdSelected && timerFromStore ? timerFromStore.id : null
+    toggleTimer(val)
+  }
+
   return (
     <>
-      {!timer ? (
+      {!timerFromStore ? (
         <div>this timer is undefined</div>
       ) : (
         <div className="flex flex-col items-center gap-y-2 p-5 h-full">
           <div className="flex items-center gap-x-2">
-            <div className="rounded-full h-2 w-2" style={{ backgroundColor: timer.color }}></div>
-            <h1 className="text-3xl">{timer.name}</h1>
+            <div
+              className="rounded-full h-2 w-2"
+              style={{ backgroundColor: timerFromStore.color }}
+            ></div>
+            <h1 className="text-3xl">{timerFromStore.name}</h1>
           </div>
           <p className="text-4xl italic text-black/30">1d 12h 32m 9s</p>
-          <ButtonUI className="mt-4">Start timer</ButtonUI>
+          <ButtonUI className="mt-4" onClick={togTimer}>
+            {currentIdSelected ? 'Stop' : 'Start'} timer
+          </ButtonUI>
 
           <div>
             <p className="text-black/50 flex items-center gap-x-1">
@@ -29,7 +42,7 @@ const TimerPage = (): ReactElement => {
             </p>
           </div>
 
-          <TimerZoneContainer zones={timer.zones} />
+          <TimerZoneContainer zones={timerFromStore.zones} />
         </div>
       )}
     </>
