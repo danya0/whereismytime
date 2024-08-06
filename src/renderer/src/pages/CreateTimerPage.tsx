@@ -2,12 +2,18 @@ import { FormEvent, ReactElement, useState } from 'react'
 import TextInputUI from '../components/UI/TextInputUI'
 import ColorPicker from '../components/ColorPicker/ColorPicker'
 import ButtonUI from '../components/UI/ButtonUI'
+import { useTimersStore } from '../store/timersStore'
+import { useNavigate } from 'react-router-dom'
 
 const CreateTimerPage = (): ReactElement => {
+  const navigate = useNavigate()
+  const timerStore = useTimersStore()
   const [timerName, setTimerName] = useState<string>('')
+  const [selectedColor, setSelectedColor] = useState<string>('lightblue')
   const createTimer = (e: FormEvent): void => {
     e.preventDefault()
-    console.log('create timer')
+    const timer = timerStore.addTimer({ color: selectedColor, name: timerName })
+    navigate(`/timer/${timer.id}`)
   }
   return (
     <div className="p-3">
@@ -17,7 +23,7 @@ const CreateTimerPage = (): ReactElement => {
           <TextInputUI value={timerName} changeValue={setTimerName} />
         </label>
         <label>Select color:</label>
-        <ColorPicker />
+        <ColorPicker selectedColor={selectedColor} change={setSelectedColor} />
         <ButtonUI>Create timer</ButtonUI>
       </form>
     </div>

@@ -1,9 +1,10 @@
 import { create } from 'zustand'
 import { Timer } from '../types/timerTypes'
+import { uuid } from '../utils/uuid'
 
 type TimersState = {
   timers: Timer[]
-  addTimer: (timer: Timer) => void
+  addTimer: (timer: { name: string; color: string }) => Timer
   getById: (id: string) => Timer | undefined
 }
 
@@ -22,8 +23,14 @@ export const useTimersStore = create<TimersState>((set, get) => ({
       zones: [{ startTime: '432432', endTime: '43243243243' }]
     }
   ],
-  addTimer: (timer: Timer): void => {
-    set((state) => ({ timers: [...state.timers, timer] }))
+  addTimer: ({ name, color }: { name: string; color: string }): Timer => {
+    const timer: Timer = { name: name, color: color, zones: [], id: uuid() }
+    set((state) => {
+      return {
+        timers: [...state.timers, timer]
+      }
+    })
+    return timer
   },
   getById: (id: string): Timer | undefined => {
     return get().timers.find((item) => item.id === id)
