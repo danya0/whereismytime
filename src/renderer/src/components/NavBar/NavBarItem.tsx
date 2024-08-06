@@ -12,7 +12,7 @@ const NavBarItem = ({ active, timer }: Props): ReactElement => {
   return (
     <div
       onClick={() => navigate(`/timer/${timer.id}`)}
-      className={`rounded-md cursor-pointer p-3 transition-colors ${active ? 'bg-white' : 'hover:bg-white/50'}`}
+      className={`rounded-md cursor-pointer px-3 py-1 transition-colors ${active ? 'bg-white' : 'hover:bg-white/50'}`}
     >
       <div className="flex items-center gap-x-2">
         <div className="h-2 w-2 rounded-full" style={{ backgroundColor: timer.color }} />
