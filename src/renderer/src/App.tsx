@@ -13,7 +13,7 @@ function App(): JSX.Element {
       <div className="grow overflow-hidden">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/timer" element={<TimerPage />} />
+          <Route path="/timer/:id" element={<TimerPage />} />
           <Route path="/create-timer" element={<CreateTimerPage />} />
         </Routes>
       </div>
