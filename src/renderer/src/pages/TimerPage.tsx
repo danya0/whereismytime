@@ -31,11 +31,11 @@ const TimerPage = (): ReactElement => {
             <div
               className="rounded-full h-2 w-2"
               style={{ backgroundColor: timerFromStore.color }}
-            ></div>
+            />
             <h1 className="text-3xl">{timerFromStore.name}</h1>
           </div>
           <p
-            className={`text-4xl italic ${currentIdSelected ? 'text-green-400' : 'text-black/30'}`}
+            className={`text-4xl italic transition-colors ${currentIdSelected ? 'text-green-400' : 'text-black/30'}`}
           >
             {totalTime}
           </p>

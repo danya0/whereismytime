@@ -17,5 +17,9 @@ export class ZoneConverter {
     return '0s'
   }
 
-  // static fromLocalString(): void {}
+  static toLocalString(dateString: string, time?: boolean): string {
+    const date = new Date(+dateString)
+    if (time) return date.toLocaleTimeString('en-US')
+    return date.toLocaleDateString('en-US')
+  }
 }
