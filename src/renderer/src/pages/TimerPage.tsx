@@ -85,13 +85,14 @@ const TimerPage = (): ReactElement => {
             </>
           </ButtonUI>
 
-          <div>
-            <p className="text-black/50 flex items-center gap-x-1">
-              <span className="underline cursor-pointer">List</span>
-              <span>|</span>
-              <span className="cursor-pointer">Graphics</span>
-            </p>
-          </div>
+          {/* todo: сделаем отображение потраченного времени в графике*/}
+          {/*<div>*/}
+          {/*  <p className="text-black/50 flex items-center gap-x-1">*/}
+          {/*    <span className="underline cursor-pointer">List</span>*/}
+          {/*    <span>|</span>*/}
+          {/*    <span className="cursor-pointer">Graphics</span>*/}
+          {/*  </p>*/}
+          {/*</div>*/}
 
           <TimerZoneContainer zones={sortedZones} />
         </div>
