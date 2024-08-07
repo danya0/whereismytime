@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 import { TimerZone } from '../../types/timerTypes'
-import { timeToText } from '../../utils/timeToText'
+import { timeToText } from '../../utils/zoneConverter'
 
 type Props = {
   zone: TimerZone

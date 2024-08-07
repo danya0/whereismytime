@@ -3,7 +3,7 @@ import ButtonUI from '../components/UI/ButtonUI'
 import { useParams } from 'react-router'
 import { useTimersStore } from '../store/timersStore'
 import TimerZoneContainer from '../components/TimerZone/TimerZoneContainer'
-import { timeToText } from '../utils/timeToText'
+import { ZoneConverter } from '../utils/zoneConverter'
 
 const TimerPage = (): ReactElement => {
   const { id } = useParams()
@@ -17,7 +17,7 @@ const TimerPage = (): ReactElement => {
     toggleTimer(val)
   }
 
-  const totalTime = timeToText(
+  const totalTime = ZoneConverter.fromSeconds(
     (currentIdSelected ? seconds : 0) + (timerFromStore ? getTotalZonesTime(timerFromStore.id) : 0)
   )
 
