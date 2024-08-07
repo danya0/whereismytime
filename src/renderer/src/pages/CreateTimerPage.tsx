@@ -9,7 +9,7 @@ const CreateTimerPage = (): ReactElement => {
   const navigate = useNavigate()
   const timerStore = useTimersStore()
   const [timerName, setTimerName] = useState<string>('')
-  const [selectedColor, setSelectedColor] = useState<string>('lightblue')
+  const [selectedColor, setSelectedColor] = useState<string>('#FFD1DC')
   const createTimer = (e: FormEvent): void => {
     e.preventDefault()
     const timer = timerStore.addTimer({ color: selectedColor, name: timerName })

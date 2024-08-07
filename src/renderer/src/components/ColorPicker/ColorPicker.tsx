@@ -1,5 +1,6 @@
 import { ReactElement } from 'react'
 import ColorPickerElement from './ColorPickerElement'
+import { colors } from '../../constants/colors'
 
 type Props = {
   selectedColor: string
@@ -7,7 +8,6 @@ type Props = {
 }
 
 const ColorPicker = ({ selectedColor, change }: Props): ReactElement => {
-  const colors = ['lightblue', 'orange', 'lightgreen']
   return (
     <div className="flex gap-3 flex-wrap">
       {colors.map((color) => (
