@@ -79,6 +79,7 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 
+  // todo: выводи сообщение, когда приложение закрывают, и оно улетает в трей
   tray = new Tray(icon)
   const contextMenu = Menu.buildFromTemplate([
     {
