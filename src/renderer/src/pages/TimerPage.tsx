@@ -4,6 +4,8 @@ import { useParams } from 'react-router'
 import { useTimersStore } from '../store/timersStore'
 import TimerZoneContainer from '../components/TimerZone/TimerZoneContainer'
 import { ZoneConverter } from '../utils/zoneConverter'
+import pause from '../assets/Icons/pause.svg'
+import play from '../assets/Icons/play.svg'
 
 const TimerPage = (): ReactElement => {
   const { id } = useParams()
@@ -43,8 +45,15 @@ const TimerPage = (): ReactElement => {
           >
             {totalTime}
           </p>
-          <ButtonUI className="mt-4" onClick={togTimer}>
-            {currentIdSelected ? 'Stop' : 'Start'} timer
+          <ButtonUI className="mt-4 flex items-center gap-x-1" onClick={togTimer}>
+            <>
+              {currentIdSelected ? (
+                <img className="h-4 w-4" src={pause} alt="pause" />
+              ) : (
+                <img className="h-4 w-4" src={play} alt="play" />
+              )}
+              <span>{currentIdSelected ? 'Stop' : 'Start'} timer</span>
+            </>
           </ButtonUI>
 
           <div>

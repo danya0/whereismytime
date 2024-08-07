@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { Timer, TimerZone } from '../types/timerTypes'
 import { uuid } from '../utils/uuid'
+import { LS } from '../utils/ls'
 
 type TimersState = {
   //variables
@@ -23,6 +24,8 @@ type TimersState = {
   resetSeconds: () => void
 
   createZone: (timerId: string) => TimerZone
+
+  updateLocal: () => void
 }
 
 export const useTimersStore = create<TimersState>((set, get) => ({
@@ -30,33 +33,7 @@ export const useTimersStore = create<TimersState>((set, get) => ({
   startedInterval: null,
   startedDate: null,
   seconds: 0,
-  timers: [
-    {
-      id: '111111111111111',
-      color: 'orange',
-      name: 'Super',
-      zones: [
-        { startTime: '1723037267320', endTime: '1723037915458', totalTime: 543553 },
-        { startTime: '1723037938872', endTime: '1723038002431', totalTime: 443 }
-      ]
-    },
-    {
-      id: '22222222222222222',
-      color: 'lightblue',
-      name: 'tic tac toe',
-      zones: [{ startTime: '432432', endTime: '43243243243', totalTime: 444 }]
-    },
-    {
-      id: '33333333333333333333',
-      color: 'lightgreen',
-      name: 'mario',
-      zones: [
-        { startTime: '33432423', endTime: '4654654543543', totalTime: 272135 },
-        { startTime: '3343242343', endTime: '21543543', totalTime: 51332 },
-        { startTime: '4u432432', endTime: '21543543', totalTime: 689 }
-      ]
-    }
-  ],
+  timers: LS.getItem<Timer[], Timer[]>('timers', []),
   createInterval(interval: NodeJS.Timeout): void {
     set(() => ({ startedInterval: interval, startedDate: Date.now().toString() }))
   },
@@ -80,6 +57,8 @@ export const useTimersStore = create<TimersState>((set, get) => ({
         timers: [...state.timers, timer]
       }
     })
+
+    get().updateLocal()
     return timer
   },
   getById: (id: string): Timer | undefined => {
@@ -103,11 +82,11 @@ export const useTimersStore = create<TimersState>((set, get) => ({
     })
 
     set(() => ({ timers: withEditedTimer }))
+    get().updateLocal()
     return zone
   },
   incrementSeconds: (): void => {
     set((state) => {
-      console.log('state.seconds -> ', state.seconds)
       return { seconds: state.seconds + 1 }
     })
   },
@@ -121,5 +100,9 @@ export const useTimersStore = create<TimersState>((set, get) => ({
     return currentTimer.zones.reduce((acc: number, zone: TimerZone) => {
       return acc + zone.totalTime
     }, 0)
+  },
+  updateLocal: (): void => {
+    const timers = get().timers
+    LS.setItem('timers', timers)
   }
 }))
