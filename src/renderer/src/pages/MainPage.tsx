@@ -1,9 +1,6 @@
 import { ReactElement } from 'react'
-import { useStore } from '../store/store'
 
 const MainPage = (): ReactElement => {
-  const store = useStore()
-
   return (
     <div className="flex flex-col items-center justify-between w-full h-full px-3 pt-8 pb-2">
       <div>
