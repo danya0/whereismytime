@@ -15,7 +15,7 @@ const NavBar = (): ReactElement => {
 
   return (
     <nav className="shrink-0 overflow-hidden bg-[#f2f4f5] gap-y-6 min-w-[230px] basis-[30%] py-3 pl-3 flex flex-col justify-between">
-      <div>
+      <div className="flex flex-col grow min-h-1">
         <Link className="flex items-center gap-x-2 mb-2 p-2 bg-white rounded-md mr-3" to="/">
           <img className="h-4 w-4" src={HomeSvg} alt="home" />
           <span>Home page</span>
