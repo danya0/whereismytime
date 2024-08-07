@@ -19,6 +19,7 @@ type TimersState = {
   createInterval: (interval: NodeJS.Timeout) => void
   removeInterval: () => void
   addTimer: (timer: { name: string; color: string }) => Timer
+  removeTimer: (timerId: string) => void
   toggleTimer: (id: string | null) => void
   incrementSeconds: () => void
   resetSeconds: () => void
@@ -60,6 +61,14 @@ export const useTimersStore = create<TimersState>((set, get) => ({
 
     get().updateLocal()
     return timer
+  },
+  removeTimer(timerId: string): void {
+    set((state) => {
+      return {
+        timers: state.timers.filter((timer) => timer.id !== timerId)
+      }
+    })
+    get().updateLocal()
   },
   getById: (id: string): Timer | undefined => {
     return get().timers.find((item) => item.id === id)
