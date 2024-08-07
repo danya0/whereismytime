@@ -3,20 +3,26 @@ import { Timer, TimerZone } from '../types/timerTypes'
 import { uuid } from '../utils/uuid'
 
 type TimersState = {
+  //variables
   selectedTimerId: string | null
   startedInterval: null | NodeJS.Timeout
   startedDate: string | null
   seconds: number
   timers: Timer[]
 
+  //getter
+  getById: (id: string) => Timer | undefined
+  getTotalZonesTime: (id: string) => number
+
+  //methods
   createInterval: (interval: NodeJS.Timeout) => void
   removeInterval: () => void
   addTimer: (timer: { name: string; color: string }) => Timer
   toggleTimer: (id: string | null) => void
-  getById: (id: string) => Timer | undefined
-  createZone: (timerId: string) => TimerZone
   incrementSeconds: () => void
   resetSeconds: () => void
+
+  createZone: (timerId: string) => TimerZone
 }
 
 export const useTimersStore = create<TimersState>((set, get) => ({
@@ -41,7 +47,11 @@ export const useTimersStore = create<TimersState>((set, get) => ({
       id: '33333333333333333333',
       color: 'lightgreen',
       name: 'mario',
-      zones: [{ startTime: '33432423', endTime: '4654654543543', totalTime: 2345 }]
+      zones: [
+        { startTime: '33432423', endTime: '4654654543543', totalTime: 272135 },
+        { startTime: '3343242343', endTime: '21543543', totalTime: 51332 },
+        { startTime: '4u432432', endTime: '21543543', totalTime: 689 }
+      ]
     }
   ],
   createInterval(interval: NodeJS.Timeout): void {
@@ -100,5 +110,13 @@ export const useTimersStore = create<TimersState>((set, get) => ({
   },
   resetSeconds: (): void => {
     set(() => ({ seconds: 0 }))
+  },
+  getTotalZonesTime: (id: string): number => {
+    const currentTimer = get().timers.find((timer) => timer.id === id)
+    if (!currentTimer) return 0
+
+    return currentTimer.zones.reduce((acc: number, zone: TimerZone) => {
+      return acc + zone.totalTime
+    }, 0)
   }
 }))

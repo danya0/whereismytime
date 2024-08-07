@@ -19,6 +19,7 @@ function App(): JSX.Element {
     incrementSeconds,
     resetSeconds
   } = useTimersStore()
+
   const prevSelectedTimerId = usePrevious(selectedTimerId)
   useEffect((): void => {
     if (prevSelectedTimerId && prevSelectedTimerId !== selectedTimerId) {

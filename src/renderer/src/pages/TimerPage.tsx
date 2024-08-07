@@ -3,18 +3,23 @@ import ButtonUI from '../components/UI/ButtonUI'
 import { useParams } from 'react-router'
 import { useTimersStore } from '../store/timersStore'
 import TimerZoneContainer from '../components/TimerZone/TimerZoneContainer'
+import { timeToText } from '../utils/timeToText'
 
 const TimerPage = (): ReactElement => {
   const { id } = useParams()
   const timerStore = useTimersStore()
   const timerFromStore = id ? timerStore.getById(id) : undefined
 
-  const { toggleTimer, selectedTimerId } = useTimersStore()
+  const { toggleTimer, selectedTimerId, seconds, getTotalZonesTime } = useTimersStore()
   const currentIdSelected = selectedTimerId === id
   const togTimer = (): void => {
     const val = !currentIdSelected && timerFromStore ? timerFromStore.id : null
     toggleTimer(val)
   }
+
+  const totalTime = timeToText(
+    (currentIdSelected ? seconds : 0) + (timerFromStore ? getTotalZonesTime(timerFromStore.id) : 0)
+  )
 
   return (
     <>
@@ -29,7 +34,11 @@ const TimerPage = (): ReactElement => {
             ></div>
             <h1 className="text-3xl">{timerFromStore.name}</h1>
           </div>
-          <p className="text-4xl italic text-black/30">1d 12h 32m 9s</p>
+          <p
+            className={`text-4xl italic ${currentIdSelected ? 'text-green-400' : 'text-black/30'}`}
+          >
+            {totalTime}
+          </p>
           <ButtonUI className="mt-4" onClick={togTimer}>
             {currentIdSelected ? 'Stop' : 'Start'} timer
           </ButtonUI>

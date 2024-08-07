@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 import { TimerZone } from '../../types/timerTypes'
-import TimerZoneElement from './TImerZoneElement'
+import TimerZoneElement from './TimerZoneElement'
 type Props = {
   zones: TimerZone[]
 }
