@@ -21,6 +21,10 @@ const TimerPage = (): ReactElement => {
     (currentIdSelected ? seconds : 0) + (timerFromStore ? getTotalZonesTime(timerFromStore.id) : 0)
   )
 
+  const sortedZones = timerFromStore
+    ? timerFromStore.zones.sort((a, b) => +b.startTime - +a.startTime)
+    : []
+
   return (
     <>
       {!timerFromStore ? (
@@ -51,7 +55,7 @@ const TimerPage = (): ReactElement => {
             </p>
           </div>
 
-          <TimerZoneContainer zones={timerFromStore.zones} />
+          <TimerZoneContainer zones={sortedZones} />
         </div>
       )}
     </>

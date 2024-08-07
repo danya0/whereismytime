@@ -35,7 +35,10 @@ export const useTimersStore = create<TimersState>((set, get) => ({
       id: '111111111111111',
       color: 'orange',
       name: 'Super',
-      zones: [{ startTime: '1', endTime: '2', totalTime: 44 }]
+      zones: [
+        { startTime: '1723037267320', endTime: '1723037915458', totalTime: 543553 },
+        { startTime: '1723037938872', endTime: '1723038002431', totalTime: 443 }
+      ]
     },
     {
       id: '22222222222222222',
