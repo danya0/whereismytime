@@ -1,6 +1,6 @@
 {
   "name": "whereismytime",
-  "version": "0.1",
+  "version": "0.1.0beta",
   "description": "Track time spent on a project, or any other task",
   "main": "./out/main/index.js",
   "author": "Samarkin <danya0> Danil",
