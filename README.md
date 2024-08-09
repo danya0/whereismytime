@@ -1,34 +1,17 @@
-# whereismytime
+# Where Is My Time?
 
-An Electron application with React and TypeScript
+![preview](resources/preview.png)
 
-## Recommended IDE Setup
+## Description
+Do you know how much time you spent developing the project? Or is it necessary to track the time spent on a particular action by day? Then this program is made for you. The purpose of the program is to keep track of the time spent and show you statistics.
 
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+The following technologies were used when writing the application: Electron, Vite, React, TypeScript, Zustand
 
-## Project Setup
+## Feature
+* Creating/deleting a timer
+* Setting a custom color and name for each timer
+* Display of timer operation periods (Start time, End time, Amount of time spent)
+* Local data storage
 
-### Install
-
-```bash
-$ npm install
-```
-
-### Development
-
-```bash
-$ npm run dev
-```
-
-### Build
-
-```bash
-# For windows
-$ npm run build:win
-
-# For macOS
-$ npm run build:mac
-
-# For Linux
-$ npm run build:linux
-```
+## Instaling
+[Download](https://github.com/danya0/whereismytime/releases/tag/beta) latest version. Unzip the contents of the archive, and run the executable file (.exe)
