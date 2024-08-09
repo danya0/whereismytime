@@ -106,5 +106,23 @@ app.on('window-all-closed', () => {
   quitApp()
 })
 
+const gotTheLock = app.requestSingleInstanceLock()
+
+if (!gotTheLock) {
+  app.quit()
+} else {
+  app.on('second-instance', () => {
+    // Someone tried to run a second instance, we should focus our window.
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore()
+      mainWindow.show()
+      mainWindow.focus()
+    }
+  })
+
+  // Create myWindow, load the rest of the app, etc...
+  app.on('ready', () => {})
+}
+
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.

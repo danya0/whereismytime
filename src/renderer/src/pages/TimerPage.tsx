@@ -62,12 +62,12 @@ const TimerPage = (): ReactElement => {
               </button>
             )}
           </div>
-          <div className="flex items-center gap-x-2">
+          <div className="flex items-center gap-x-2 max-w-full">
             <div
-              className="rounded-full h-2 w-2"
+              className="rounded-full h-2 w-2 shrink-0"
               style={{ backgroundColor: timerFromStore.color }}
             />
-            <h1 className="text-3xl">{timerFromStore.name}</h1>
+            <h1 className="text-3xl truncate max-w-full">{timerFromStore.name}</h1>
           </div>
           <p
             className={`text-4xl italic transition-colors ${currentIdSelected ? 'text-green-400' : 'text-black/30'}`}
